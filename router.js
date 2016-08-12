@@ -1,5 +1,7 @@
+const _       = require('underscore');
 const express = require('express');
 const storage = require('./storage');
+
 
 const Router = class Router{
 
@@ -11,8 +13,8 @@ const Router = class Router{
     }
 
     defineRoutes(){
-        this._routes.get('/', (req, res)=>{
 
+        this._routes.get('/', (req, res)=>{
 
             res.render('home/view', {
                 items: storage.items
@@ -21,11 +23,23 @@ const Router = class Router{
 
         this._routes.get('/about', (req, res)=>{
 
-
             res.render('about/view', {
                 item: storage.about
             });
         });
+
+        this._routes.get('/item/:id', (req, res)=>{
+          res.render('item/view', {
+            item: storage.items[req.params.id]
+          })
+        })
+
+        this._routes.get('/search/:q', (req, res)=>{
+          const items = _.filter(storage.items,  function(item){
+            return item.name.indexOf(req.params.q) > -1
+          })
+          res.json(items)
+        })
     }
 
     get routes(){
