@@ -1,8 +1,14 @@
-<h1>Home</h1>
-<%
-items.forEach(function(item){
-    %>
-    <div><%=item.name%></div>
+<div class="row medium-up-3 large-up-4">
     <%
-});
-%>
+    items.forEach(function(item){
+        %>
+        <div class="column">
+            <img class="thumbnail" src="http://placehold.it/350x200">
+            <h5><%=item.name%></h5>
+            <p><%=item.desc%></p>
+            <a href="/item/<%=item.id%>" class="button hollow expanded">Details</a>
+        </div>
+        <%
+    });
+    %>
+</div>

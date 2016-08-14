@@ -17,6 +17,7 @@ const Router = class Router{
         this._routes.get('/', (req, res)=>{
 
             res.render('home/view', {
+                item: storage.home,
                 items: storage.items
             });
         });

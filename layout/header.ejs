@@ -1,11 +1,27 @@
-<header>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/feedback">Feedback</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
-  </nav>
-  <input id="search" class="awesomplete" />
-</header>
+<!-- Start Top Bar -->
+<div class="top-bar">
+    <div class="row">
+        <div class="top-bar-left">
+            <ul class="menu" data-dropdown-menu>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/feedback">Feedback</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li class="has-submenu">
+                    <input id="search" class="awesomplete" type="search" list="mylist" placeholder="Search">
+                    <ul class="submenu menu vertical" id="mylist"></ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Top Bar -->
+<div class="callout large primary">
+    <div class="row column text-center">
+        <h1><%=item.name%></h1>
+    </div>
+</div>

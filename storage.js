@@ -1,16 +1,20 @@
 module.exports = {
     items: [
-        {id: 1, name: "Item A"},
-        {id: 2, name: "Item B"},
-        {id: 3, name: "Item C"},
-        {id: 4, name: "Item D"},
-        {id: 5, name: "Item E"},
-        {id: 6, name: "Item F"},
-        {id: 7, name: "Item G"},
-        {id: 8, name: "Item H"}
+        {id: 0, name: "Item A", desc: "Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur."},
+        {id: 1, name: "Item B", desc: "Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur."},
+        {id: 2, name: "Item C", desc: "Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur."},
+        {id: 3, name: "Item D", desc: "Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur."},
+        {id: 4, name: "Item E", desc: "Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur."},
+        {id: 5, name: "Item F", desc: "Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur."},
+        {id: 6, name: "Item G", desc: "Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur."},
+        {id: 7, name: "Item H", desc: "Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur."}
     ],
+    home: {
+        name: "Home"
+    },
     about: {
         name: "About",
+        title: "About us",
         content: "<p>Lorem ispum dolor sit amet consecteur orem ispum dolor sit amet consecteur. Lorem ispum dolor sit amet consecteur.</p>"
     }
 }
