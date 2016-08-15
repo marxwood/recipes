@@ -1,6 +1,6 @@
-var input = document.getElementById('search');
+const input = document.getElementById('search');
 
-var awesomplete = new Awesomplete(input, {
+const awesomplete = new Awesomplete(input, {
   minChars: 1
 });
 
@@ -15,9 +15,13 @@ $(input).on('keyup', function(e){
       console.log(items)
 
       var list = [];
-      items.forEach(function(item){
+      //items.forEach(function(item){
+      //  list.push({label:item.name, value:item.id});
+      //})
+      for(const item of items){
         list.push({label:item.name, value:item.id});
-      })
+      }
+
       awesomplete.list = list
     }
   });
