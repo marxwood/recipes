@@ -1,4 +1,6 @@
 const express = require('express');
+const formidable = require('formidable');
+const fs = require('fs');
 //const Storage = require('./storage');
 const storage = require('./storage').instantiate('mongo');
 const randomstring = require('randomstring')
@@ -45,8 +47,9 @@ const Router = class Router{
           res.send(`Your code is ${code}. Thank you for using our service!`)
         })
 
-        this._routes.get('/access/:code', (req, res)=>{
-          storage.isTokenAvailable(req.params.code, (token)=>{
+        this._routes.post('/access', (req, res)=>{
+          console.log(req.body)
+          storage.isTokenAvailable(req.body.code, (token)=>{
             if(token){
               console.log("TOKEN", token.session.code);
               res.cookie('code', token.session.code, {expires: token.expires});
@@ -78,6 +81,36 @@ const Router = class Router{
                 item: storage.about
             });
         });
+
+        this._routes.get('/feedback', this.isAuth, (req, res)=>{
+            res.render('feedback/view')
+        })
+        this._routes.post('/feedback', this.isAuth, (req, res)=>{
+
+            const form = new formidable.IncomingForm();
+            form.uploadDir = `${process.cwd()}/public/repo`;
+            form.keepExtensions = true;
+            form.parse(req, (err, fields, files)=>{
+              fs.rename(files.attachment.path, `${form.uploadDir}/${files.attachment.name}`)
+              res.render('feedback/view')
+
+              //
+              require('./emailer').email({
+                from: 'nodejs@tnation.eu',
+                to: 'nodejs@tnation.eu',
+                subject: 'Feedback Message',
+                html: `
+                  <b>Name</b> ${fields.name}<br>
+                  <b>Message</b> ${fields.message}<br>
+                `,
+                attachments: [
+                  {path: `${form.uploadDir}/${files.attachment.name}`}
+                ]
+              })
+
+            })
+
+        })
 
         this._routes.get('/item/:id', this.isAuth, (req, res)=>{
 

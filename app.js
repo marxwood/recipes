@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyparser = require('body-parser');
 const engine = require('ejs-mate');
 const Router = require('./router');
 
@@ -28,12 +29,15 @@ const Server = class Server {
           secret: '164&uu!$',
           cookie: {
             path: '/buy',
-            maxAge: 1000 * 60
+            maxAge: 1000 * 60 * 60
           },
           store: store,
           saveUninitialized: true,
           resave: true
         }))
+
+        app.use(bodyparser.urlencoded({extended: true}));
+        //app.use(bodyparser.raw({type: 'multipart/form-data'}))
 
         const router = new Router();
         app.use(router.routes);
